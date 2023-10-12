@@ -5,7 +5,10 @@ public class Message {
     int id;
     String name;
     String message;
-    
+
+    public Message(){
+        
+    }
 
     public int getId() {
         return id;
@@ -18,8 +21,6 @@ public class Message {
     public String getMessage() {
         return message;
     }
-
-
 
     public void setName(String name) {
         this.name = name;
