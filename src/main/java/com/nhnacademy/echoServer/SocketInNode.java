@@ -15,7 +15,11 @@ public class SocketInNode extends InputNode{
         log.info("Socket input node created {}", getName());
     }
 
+    @Override
+    public void run(){
+        
+    }
 
-    
+
     
 }
