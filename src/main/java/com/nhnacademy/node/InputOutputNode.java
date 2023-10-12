@@ -11,18 +11,20 @@ public class InputOutputNode extends Node {
     Wire[] inputWires;
     Wire[] outputWires;
 
-    InputOutputNode(String name, int inCount, int outCount) {
+    public InputOutputNode(String name, int inCount, int outCount) {
         super(name);
 
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
+        log.info("inOutput node created {}", getName());
     }
 
-    InputOutputNode(int inCount, int outCount) {
+    public InputOutputNode(int inCount, int outCount) {
         super();
 
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
+        log.info("inOutput node created {}", getName());
     }
 
     public Wire getOutputWire(int index) {
