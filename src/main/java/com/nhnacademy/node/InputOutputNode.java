@@ -2,6 +2,7 @@ package com.nhnacademy.node;
 
 import com.nhnacademy.exception.OutOfBoundsException;
 import com.nhnacademy.message.Message;
+import com.nhnacademy.message.StringMessage;
 import com.nhnacademy.wire.Wire;
 
 import lombok.extern.slf4j.Slf4j;
@@ -11,23 +12,30 @@ public class InputOutputNode extends Node {
     Wire[] inputWires;
     Wire[] outputWires;
 
-    InputOutputNode(String name, int inCount, int outCount) {
+    public InputOutputNode(String name, int inCount, int outCount) {
         super(name);
 
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
+        for (int i = 0; i < outCount; i++) {
+            outputWires[i] = new Wire();
+        }
         log.info("in out node created : {}", getName());
     }
 
-    InputOutputNode(int inCount, int outCount) {
+    public InputOutputNode(int inCount, int outCount) {
         super();
 
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
+        for (int i = 0; i < outCount; i++) {
+            outputWires[i] = new Wire();
+        }
         log.info("in out node created : {}", getName());
     }
 
-    public Wire getOutputWire(int index) {
+    // wire 가져오기
+    public Wire getWire(int index) {
         if (index < 0 || outputWires.length <= index) {
             throw new OutOfBoundsException();
         }
@@ -35,7 +43,8 @@ public class InputOutputNode extends Node {
         return outputWires[index];
     }
 
-    public void connectOutputWire(int index, Wire wire) {
+    // input 노드에 wire 연결
+    public void connect(int index, Wire wire) {
         if (index < 0 || outputWires.length <= index) {
             throw new OutOfBoundsException();
         }
@@ -44,26 +53,15 @@ public class InputOutputNode extends Node {
         log.info("{} connect {}", getName(), index);
     }
 
-    public int getInputWireCount() {
-        return inputWires.length;
-    }
-
-    public Wire getInputWire(int index) {
-        if (index < 0 || inputWires.length <= index) {
-            throw new OutOfBoundsException();
-        }
-
-        return inputWires[index];
-    }
-
-    void output(Message message) {
-        log.trace("Message Out ready");
+    // 와이어에 메세지 저장
+    public void putMessage(Message message) {
+        log.info("Message Out ready");
         for (Wire wire : outputWires) {
             if (wire != null) {
                 wire.put(message);
-                log.trace("out message : {}", message);
+                log.info("out message : {}", ((StringMessage) message).getStringValue());
             }
         }
-        log.trace("Message Out success");
+        log.info("Message Out success");
     }
 }

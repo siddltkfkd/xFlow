@@ -1,7 +1,7 @@
 package com.nhnacademy.message;
 
 public class StringMessage extends Message {
-    
+
     String stringValue;
 
     public StringMessage(String message) {
@@ -12,4 +12,8 @@ public class StringMessage extends Message {
         return stringValue;
     }
 
+    @Override
+    public String toString() {
+        return stringValue;
+    }
 }
