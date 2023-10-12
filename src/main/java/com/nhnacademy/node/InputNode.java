@@ -37,19 +37,20 @@ public class InputNode extends Node {
         log.info("{} connected {}", getName(), index);
     }
 
-    public void output(Message message) {
+    public void putMessage(Message message) {
         boolean accept = true;
 
         for (Wire wire : inputWires) {
             accept = accept && wire.getMessageQueue().isEmpty();
         }
-        log.info("output ready");
+        log.info("output ready : {}", getName());
         if (accept) {
             for (Wire wire : inputWires) {
                 wire.put(message);
                 log.info("message put : {}", message);
             }
         }
+        log.info("output success");
     }
 
 }
