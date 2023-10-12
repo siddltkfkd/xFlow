@@ -1,25 +1,26 @@
 package com.nhnacademy.message;
 
-import netscape.javascript.JSObject;
-
 public class Message {
-    Object message;
-    String type;
+    static int count;
+    final String id;
+    long creationTime;
 
-    public Message(Object message) {
-        this.message = message;
+    Message() {
+        count++;
+        id = getClass().getSimpleName() + count;
+        creationTime = System.currentTimeMillis();
     }
 
-    public void messageType() {
-        if (message instanceof String) {
-            this.type = "String";
-        } else if (message instanceof JSObject) {
-            this.type = "JSON";
-        }
+    public int getCount() {
+        return count;
     }
 
-    @Override
-    public String toString() {
-        return (String) message;
+    public String getId() {
+        return id;
     }
+
+    public long getCreationTime() {
+        return creationTime;
+    }
+
 }
