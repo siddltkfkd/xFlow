@@ -29,21 +29,21 @@ public class Wire {
         }
     }
 
-    public void get() {
+    public Message get() {
         // 가져오면서 큐에서 삭제
         if (messageQueue.isEmpty()) {
             throw new WireIsEmptyException();
         } else {
-            messageQueue.poll();
+            return messageQueue.poll();
         }
     }
 
-    public void peek() {
+    public Message peek() {
         // 삭제하지않고 값만 가져옴
         if (messageQueue.isEmpty()) {
             throw new WireIsEmptyException();
         } else {
-            messageQueue.peek();
+            return messageQueue.peek();
         }
     }
 
