@@ -17,6 +17,5 @@ public class Main {
         output.start();
 
         input.connect(0, output.getInputPort(0));
-        input.output(new Message("Message"));
     }
 }
