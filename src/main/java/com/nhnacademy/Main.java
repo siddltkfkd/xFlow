@@ -1,7 +1,10 @@
 package com.nhnacademy;
 
+import com.nhnacademy.node.Node;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Node node = new Node();
+        node.start();
     }
 }
