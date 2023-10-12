@@ -16,6 +16,7 @@ public class InputOutputNode extends Node {
 
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
+        log.info("in out node created : {}", getName());
     }
 
     InputOutputNode(int inCount, int outCount) {
@@ -23,6 +24,7 @@ public class InputOutputNode extends Node {
 
         inputWires = new Wire[inCount];
         outputWires = new Wire[outCount];
+        log.info("in out node created : {}", getName());
     }
 
     public Wire getOutputWire(int index) {
@@ -39,6 +41,7 @@ public class InputOutputNode extends Node {
         }
 
         outputWires[index] = wire;
+        log.info("{} connect {}", getName(), index);
     }
 
     public int getInputWireCount() {
@@ -54,11 +57,13 @@ public class InputOutputNode extends Node {
     }
 
     void output(Message message) {
-        log.trace("Message Out");
+        log.trace("Message Out ready");
         for (Wire wire : outputWires) {
             if (wire != null) {
                 wire.put(message);
+                log.trace("out message : {}", message);
             }
         }
+        log.trace("Message Out success");
     }
 }
