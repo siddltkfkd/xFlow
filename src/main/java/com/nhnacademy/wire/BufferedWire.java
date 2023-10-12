@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import com.nhnacademy.message.Message;
 
-public class BufferedWire extends Wire {
+public class BufferedWire implements Wire {
     
     Queue<Message> messageQueue;
 
