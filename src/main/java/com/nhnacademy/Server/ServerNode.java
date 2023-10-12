@@ -25,6 +25,12 @@ public class ServerNode {
                 log.info("해당 주소는 접근이 제한되었습니다.");
                 log.info("제한된 주소 : {}", clientAddress);
                 
+                try {
+                    socket.close();    
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+                
             }
         }
         
