@@ -1,38 +1,38 @@
 package com.nhnacademy.node;
 
-import com.nhnacademy.exception.OutofPortCountException;
-import com.nhnacademy.port.Port;
+import com.nhnacademy.exception.OutofWireCountException;
+import com.nhnacademy.wire.Wire;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class OutputNode extends Node {
-    Port[] ports;
-    int portCount;
+    Wire[] wire;
+    int wireCount;
 
-    public OutputNode(int portCount) {
+    public OutputNode(int wireCount) {
         super();
-        ports = new Port[portCount];
-        for (int i = 0; i < portCount; i++) {
-            ports[i] = new Port();
+        wire = new Wire[wireCount];
+        for (int i = 0; i < wireCount; i++) {
+            wire[i] = new Wire();
         }
         log.info("output node created : {}", getName());
     }
 
-    public OutputNode(String name, int portCount) {
+    public OutputNode(String name, int wireCount) {
         super(name);
-        ports = new Port[portCount];
-        for (int i = 0; i < portCount; i++) {
-            ports[i] = new Port();
+        wire = new Wire[wireCount];
+        for (int i = 0; i < wireCount; i++) {
+            wire[i] = new Wire();
         }
         log.info("output node created : {}", getName());
     }
 
-    public Port getInputPort(int index) {
-        if (portCount < index) {
-            throw new OutofPortCountException();
+    public Wire getInputWire(int index) {
+        if (wireCount < index) {
+            throw new OutofWireCountException();
         }
-        return ports[index];
+        return wire[index];
     }
 
 }

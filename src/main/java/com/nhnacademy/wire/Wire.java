@@ -1,22 +1,22 @@
-package com.nhnacademy.port;
+package com.nhnacademy.wire;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import com.nhnacademy.exception.PortIsEmptyException;
-import com.nhnacademy.exception.PortIsFullException;
+import com.nhnacademy.exception.WireIsEmptyException;
+import com.nhnacademy.exception.wireIsFullException;
 import com.nhnacademy.message.Message;
 
-public class Port {
+public class Wire {
     Queue<Message> messageQueue;
     int size;
 
-    public Port() {
+    public Wire() {
         this.messageQueue = new LinkedList<>();
         this.size = 4;
     }
 
-    public Port(int size) {
+    public Wire(int size) {
         this.messageQueue = new LinkedList<>();
         this.size = size;
     }
@@ -25,14 +25,14 @@ public class Port {
         if (messageQueue.size() < size) {
             messageQueue.add(message);
         } else {
-            throw new PortIsFullException();
+            throw new wireIsFullException();
         }
     }
 
     public void get() {
         // 가져오면서 큐에서 삭제
         if (messageQueue.isEmpty()) {
-            throw new PortIsEmptyException();
+            throw new WireIsEmptyException();
         } else {
             messageQueue.poll();
         }
@@ -41,7 +41,7 @@ public class Port {
     public void peek() {
         // 삭제하지않고 값만 가져옴
         if (messageQueue.isEmpty()) {
-            throw new PortIsEmptyException();
+            throw new WireIsEmptyException();
         } else {
             messageQueue.peek();
         }

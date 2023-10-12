@@ -16,6 +16,6 @@ public class Main {
         input.start();
         output.start();
 
-        input.connect(0, output.getInputPort(0));
+        input.connect(0, output.getInputWire(0));
     }
 }
