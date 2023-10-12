@@ -28,7 +28,8 @@ public class OutputNode extends Node {
         log.info("output node created : {}", getName());
     }
 
-    public Wire getInputWire(int index) {
+    // 와이어 가져오기
+    public Wire getWire(int index) {
         if (wireCount < index) {
             throw new OutofWireCountException();
         }
