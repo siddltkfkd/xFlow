@@ -64,4 +64,11 @@ public class InputOutputNode extends Node {
         }
         log.info("Message Out success");
     }
+
+    // 특정 와이어에만 메세지 저장
+    public void putMessage(int index, Message message) {
+        log.info("message input ready : {}", getName());
+        inputWires[index].put(message);
+        log.info("{} put message : {}", getName(), message.toString());
+    }
 }

@@ -53,4 +53,10 @@ public class InputNode extends Node {
         log.info("output success");
     }
 
+    public void putMessage(int index, Message message) {
+        log.info("message input ready : {}", getName());
+        inputWires[index].put(message);
+        log.info("{} put message : {}", getName(), message.toString());
+    }
+
 }
