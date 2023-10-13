@@ -6,24 +6,21 @@ import com.nhnacademy.wire.Wire;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OutputNode extends Node {
-    Wire[] wire;
+public class OutputNode extends Node {      //데이터를 받기만 하는 노드
+    Wire[] intputWire;
     int wireCount;
 
     public OutputNode(int wireCount) {
         super();
-        wire = new Wire[wireCount];
-        for (int i = 0; i < wireCount; i++) {
-            wire[i] = new Wire();
-        }
+        intputWire = new Wire[wireCount];
         log.info("output node created : {}", getName());
     }
 
     public OutputNode(String name, int wireCount) {
         super(name);
-        wire = new Wire[wireCount];
+        intputWire = new Wire[wireCount];
         for (int i = 0; i < wireCount; i++) {
-            wire[i] = new Wire();
+            intputWire[i] = new Wire();
         }
         log.info("output node created : {}", getName());
     }
@@ -33,7 +30,7 @@ public class OutputNode extends Node {
         if (wireCount < index) {
             throw new OutofWireCountException();
         }
-        return wire[index];
+        return intputWire[index];
     }
 
 }

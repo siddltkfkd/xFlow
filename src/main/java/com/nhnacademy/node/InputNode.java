@@ -8,19 +8,19 @@ import com.nhnacademy.wire.Wire;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class InputNode extends Node {
-    Wire[] inputWires;
+public class InputNode extends Node {       //데이터를 주기만 하는 노드
+    Wire[] outputWires;
     int wireCount;
 
     public InputNode(int wireCount) {
         super();
-        inputWires = new Wire[wireCount];
+        outputWires = new Wire[wireCount];
         log.info("input node created {}", getName());
     }
 
     public InputNode(String name, int wireCount) {
         super(name);
-        inputWires = new Wire[wireCount];
+        outputWires = new Wire[wireCount];
         log.info("input node created {}", getName());
     }
 
@@ -29,23 +29,23 @@ public class InputNode extends Node {
             throw new OutofWireCountException();
         }
 
-        if (inputWires[index] != null) {
+        if (outputWires[index] != null) {
             throw new AlreadyConnectedException();
         }
 
-        inputWires[index] = wire;
+        outputWires[index] = wire;
         log.info("{} connected {}", getName(), index);
     }
 
     public void putMessage(Message message) {
         boolean accept = true;
 
-        for (Wire wire : inputWires) {
+        for (Wire wire : outputWires) {
             accept = accept && wire.getMessageQueue().isEmpty();
         }
         log.info("output ready : {}", getName());
         if (accept) {
-            for (Wire wire : inputWires) {
+            for (Wire wire : outputWires) {
                 wire.put(message);
                 log.info("message put : {}", message);
             }
