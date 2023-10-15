@@ -23,5 +23,10 @@ public class Main {
 
         inout.getWire(0).peek();
         output.getWire(0).peek();
+
+
+
+
+        
     }
 }
