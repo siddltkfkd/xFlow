@@ -1,6 +1,7 @@
 package com.nhnacademy.node;
 
 import com.nhnacademy.exception.OutOfBoundsException;
+import com.nhnacademy.exception.OutofWireCountException;
 import com.nhnacademy.message.Message;
 import com.nhnacademy.message.StringMessage;
 import com.nhnacademy.wire.Wire;
@@ -71,4 +72,5 @@ public class InputOutputNode extends Node {
         inputWires[index].put(message);
         log.info("{} put message : {}", getName(), message.toString());
     }
+
 }
